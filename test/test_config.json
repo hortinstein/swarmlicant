@@ -1,0 +1,25 @@
+{
+  "name": "dyson",
+  "nodes": "5",
+  "user": "hortinstein",
+ 	"curator_ip": "10.2.2.2",
+ 	"application_servers": [
+		"90.2.2.21",
+    "90.2.2.22"
+ 	],
+  "nanodes": [
+    "90.2.2.21",
+    "90.2.2.22",
+    "90.2.2.23",
+    "90.2.2.24",
+    "90.2.2.25"
+  ],
+  "ports": {
+    "IP": "0.0.3",
+    "control": "~0.2.3"
+  },
+  "storage_backend": "riak_kv_eleveldb_backend",
+  "init_cookie":"justatestcookie",
+  "username":"hortinstein",
+  "passcookie":"justatestpasscookie"
+}

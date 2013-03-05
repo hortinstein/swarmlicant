@@ -1,0 +1,25 @@
+{
+  "name": "swarmgent",
+  "version": "0.0.0",
+  "description": "riak swarm node that recieves instructions for cluster setup",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hortinstein/swarmgent.git"
+  },
+  "keywords": [
+    "riak",
+    "swarm",
+    ""
+  ],
+  "author": "hortinstein",
+  "license": "BSD",
+  "readmeFilename": "README.md",
+  "gitHead": "bd531ae82d31ed0ce63e975306dd67dd79fd6f2c",
+  "dependencies": {
+    "restify": "~2.3.2"
+  }
+}
