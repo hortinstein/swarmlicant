@@ -1,6 +1,3 @@
-nanode 	= require("./nanode_lib/nanode.js");
-curator = require("./curator_lib/curator.js");
-
 //swarmgent//
 
 var restify = require('restify');
