@@ -1,4 +1,4 @@
 swarmgent
 =========
 
-one of the riak swam nodes that can either go into curator mode or node mode
+one of the riak swam nodes that can either go into curator or trove mode
