@@ -6,5 +6,8 @@
 	"init_cookie": "justatestcookie",
 	"username": "hortinstein",
 	"passcookie": "justatestpasscookie",
+	"trove_ips": [
+		"90.2.2.21",
+		"90.2.2.22"],
 	"init": "true",
 }
