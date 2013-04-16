@@ -1,6 +1,6 @@
 //swarmgent//
 
-log = require('./log/log.js'); //winston configuration
+var log = require('./log/log.js'); //winston configuration
 
 var restify = require('restify');
 var server = restify.createServer();
@@ -10,12 +10,14 @@ server.use(restify.bodyParser({
 
 //when swarmlicant is identified as a curator 
 var curator = function(config) {
+    //firewall configuration could be done here
 	log.info("curator initialized");
 }
 
 //when swarmlicant is identified as a trove 
 var trove = function(config) {
-	log.info("trove initialized");
+	//firewall configuration could be done here
+    log.info("trove initialized");
 }
 
 server.post('/init', function(req, res, next) {
@@ -39,16 +41,17 @@ server.get('/ping', function(req, res, next) {
 });
 
 server.get('/config', function(req, res, next) {
-	config = req.body;
+	var config = req.body;
 
 });
 
 server.get('/update', function(req, res, next) {
-	config = req.body;
+	var config = req.body;
 	console.log(config);
 });
 server.get('/status', function(req, res, next) {
-	
+    res.send('this should display uptime info, type, load, versions etc');
+
 });
 server.get('/log', function(req, res, next) {
 });
