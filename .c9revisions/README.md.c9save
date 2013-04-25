@@ -1,2 +1,0 @@
-{"ts":1365833061361,"silentsave":true,"restoring":false,"patch":[[{"diffs":[[1,"swarmgent\n=========\n\none of the riak swam nodes that can either go into curator mode or node mode"]],"start1":0,"start2":0,"length1":0,"length2":97}]],"length":97}
-{"contributors":[],"silentsave":false,"ts":1365833076695,"patch":[[{"diffs":[[0,"tor "],[-1,"mode or nod"],[1,"or trov"],[0,"e mo"]],"start1":76,"start2":76,"length1":19,"length2":15}]],"length":93,"saved":false}
