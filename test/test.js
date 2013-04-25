@@ -4,7 +4,7 @@ var request = require('request');
 var swarmgent = require('../index.js');
 
 it('should be able to ping the server', function(done) {
-	request('http://127.8.202.129:8080/ping', function(e, r, o) {
+	request('http://198.199.100.142:8080/ping', function(e, r, o) {
 		o.should.equal("\"pong\"");
 		done();
 	});
