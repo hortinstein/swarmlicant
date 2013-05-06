@@ -6,8 +6,9 @@
 	"init_cookie": "justatestcookie",
 	"username": "hortinstein",
 	"passcookie": "justatestpasscookie",
+	"port": "123",
 	"trove_ips": [
 		"90.2.2.21",
 		"90.2.2.22"],
-	"init": "true",
+	"init": "true"
 }
