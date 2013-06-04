@@ -1,14 +1,25 @@
 {
-	"curator_ip": "127.0.0.1",
-	"type": "trove",
-	"name": "dyson1",
+	"name": "TEST-dyson",
+	"user": "hortinstein",
+	"application_servers": ["90.2.2.21", "90.2.2.22"],
 	"storage_backend": "riak_kv_eleveldb_backend",
+	"port": 8090,
 	"init_cookie": "justatestcookie",
 	"username": "hortinstein",
 	"passcookie": "justatestpasscookie",
-	"port": "123",
-	"trove_ips": [
-		"90.2.2.21",
-		"90.2.2.22"],
-	"init": "true"
+	"init": "true",
+	"schematic": {
+		"troves": [{
+				"ip_address": "198.211.102.14",
+				"id": 216538
+			}, {
+				"ip_address": "198.211.117.41",
+				"id": 216539
+			}
+		],
+		"curator": {
+			"ip_address": "198.199.79.115",
+			"id": 216540
+		}
+	}
 }
