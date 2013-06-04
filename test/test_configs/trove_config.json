@@ -6,6 +6,7 @@
 	"port": 8090,
 	"init_cookie": "justatestcookie",
 	"username": "hortinstein",
+	"type": "trove",
 	"passcookie": "justatestpasscookie",
 	"init": "true",
 	"schematic": {

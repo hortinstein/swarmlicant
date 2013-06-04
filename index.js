@@ -10,17 +10,33 @@ server.use(restify.bodyParser({
 
 //when swarmlicant is identified as a curator 
 var curator = function(config) {
-    //firewall configuration could be done here
+	//firewall configuration could be done here
 	log.info("curator initialized");
 }
 
 //when swarmlicant is identified as a trove 
 var trove = function(config) {
 	//firewall configuration could be done here
-    log.info("trove initialized");
+	log.info("trove initialized");
 }
 
 server.post('/init', function(req, res, next) {
+	var config = req.body;
+	switch (config.type) {
+		case "curator":
+			curator(config);
+			break;
+		case "trove":
+			trove(config);
+			break;
+	};
+	res.send({
+		status: 'ok',
+		type: config.type
+	});
+});
+
+server.post('/config', function(req, res, next) {
 	var config = req.body;
 	switch (config.type) {
 		case "curator":
@@ -50,11 +66,10 @@ server.get('/update', function(req, res, next) {
 	console.log(config);
 });
 server.get('/status', function(req, res, next) {
-    res.send('this should display uptime info, type, load, versions etc');
+	res.send('this should display uptime info, type, load, versions etc');
 
 });
-server.get('/log', function(req, res, next) {
-});
+server.get('/log', function(req, res, next) {});
 server.listen(8080, function() {
-	console.log('%s listening at %s', server.name, server.url);
+	log.info(server.name + " listening at " + server.url);
 });
