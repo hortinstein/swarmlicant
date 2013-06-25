@@ -33,7 +33,6 @@ describe("swarmlicant tests: curator", function() {
 
 })
 
-
 describe("swarmlicant tests: trove", function() {
 	var swarmgent = require('../index.js');
 	before(function(done) { //timeout function to allow for droplet init

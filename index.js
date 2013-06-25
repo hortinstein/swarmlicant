@@ -1,7 +1,7 @@
 //swarmgent//
 
 var log = require('./log/log.js'); //winston configuration
-
+var config = '';
 var restify = require('restify');
 var server = restify.createServer();
 server.use(restify.bodyParser({
@@ -37,6 +37,7 @@ server.post('/init', function(req, res, next) {
 });
 
 server.post('/config', function(req, res, next) {
+	//validation should be used here
 	var config = req.body;
 	switch (config.type) {
 		case "curator":

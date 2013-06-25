@@ -3,8 +3,8 @@
 		"provider_id": "digital_ocean",
 		"region_id": 1,
 		"api_info": {
-			"client_key": "ZedgiRRB0CrWJgMf1kjnI",
-			"api_key": "2h1uegR80iNOHbRiBmUjmf9Ia5Ptn1f5f8wdWD8Pi"
+			"client_key": "asdfasfa",
+			"api_key": "asfasd"
 		},
 		"vm_image_id": 174391
 	},
@@ -13,7 +13,7 @@
 	"user": "hortinstein",
 	"application_servers": ["90.2.2.21", "90.2.2.22"],
 	"storage_backend": "riak_kv_eleveldb_backend",
-	"port": 8090,
+	"port": 8093,
 	"init_cookie": "justatestcookie",
 	"username": "hortinstein",
 	"passcookie": "justatestpasscookie",
