@@ -26,14 +26,14 @@ var trove = function(config) {
 
 var register_handlers = function(swarmlicant_obj){
     swarmlicant_obj.on('error',function (error) {
-        
+        log.error(error);
     });
-    swarmlicant_obj.on('log',function (error) {
-        
+    swarmlicant_obj.on('log',function (log) {
+        log.info(log);
     });
-    swarmlicant_obj.on('metric',function (error) {
+    // swarmlicant_obj.on('metric',function (metric) {
         
-    });
+    // });
 }
 
 
@@ -47,6 +47,7 @@ server.post('/init', function(req, res, next) {
 			trove(config);
 			break;
 	};
+    //registers the handlers for the swarmlicant objects
     register_handlers(swarmlicant_obj);
 	res.send({
 		status: 'ok',
@@ -72,12 +73,13 @@ server.post('/config', function(req, res, next) {
 });
 
 server.get('/ping', function(req, res, next) {
-	res.send('pong');
+	swarmlicant_obj.ping(function(e,o){
+        res.send(o);
+    });
 });
 
 server.get('/config', function(req, res, next) {
 	var config = req.body;
-
 });
 
 server.get('/update', function(req, res, next) {
@@ -85,10 +87,21 @@ server.get('/update', function(req, res, next) {
 	console.log(config);
 });
 server.get('/status', function(req, res, next) {
-	res.send('this should display uptime info, type, load, versions etc');
+	swarmlicant_obj.status(function(e,o){
+        res.send(o);
+	});
 
 });
-server.get('/log', function(req, res, next) {});
+server.get('/log', function(req, res, next) {
+    log.query({}, function (e, r) {
+    if (e) {
+      throw e;
+    }
+    res.send(r);
+  });
+});
+
+
 server.listen(8080, function() {
 	log.info(server.name + " listening at " + server.url);
 });
