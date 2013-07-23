@@ -8,17 +8,34 @@ server.use(restify.bodyParser({
 	mapParams: false
 }));
 
+var swarmlicant_obj = '';
+
 //when swarmlicant is identified as a curator 
 var curator = function(config) {
 	//firewall configuration could be done here
 	log.info("curator initialized");
-}
+    swarmlicant_obj = require('curator');
+};
 
 //when swarmlicant is identified as a trove 
 var trove = function(config) {
 	//firewall configuration could be done here
 	log.info("trove initialized");
+    swarmlicant_obj = require('trove');
+};
+
+var register_handlers = function(swarmlicant_obj){
+    swarmlicant_obj.on('error',function (error) {
+        
+    });
+    swarmlicant_obj.on('log',function (error) {
+        
+    });
+    swarmlicant_obj.on('metric',function (error) {
+        
+    });
 }
+
 
 server.post('/init', function(req, res, next) {
 	var config = req.body;
@@ -30,6 +47,7 @@ server.post('/init', function(req, res, next) {
 			trove(config);
 			break;
 	};
+    register_handlers(swarmlicant_obj);
 	res.send({
 		status: 'ok',
 		type: config.type
@@ -46,7 +64,7 @@ server.post('/config', function(req, res, next) {
 		case "trove":
 			trove(config);
 			break;
-	};
+	}
 	res.send({
 		status: 'ok',
 		type: config.type
