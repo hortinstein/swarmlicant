@@ -24,7 +24,7 @@
     "should": "~1.2.2",
     "mocha": "~1.9.0",
     "request": "~2.16.6",
-    "winston": "~0.6.2",
+    "winston": "*",
     "trove": "https://github.com/hortinstein/trove/tarball/master",
     "curator": "https://github.com/hortinstein/curator/tarball/master"
   }

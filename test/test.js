@@ -54,11 +54,18 @@ describe("swarmlicant tests: trove", function() {
 			json: true,
 			url: 'http://0.0.0.0:8080/init'
 		}, function(e, r, o) {
+			console.log(e,o);
 			o.status.should.equal("ok");
 			o.type.should.equal("trove");
 			done();
 		}).form(config);
 
+	});
+	it('should be able to request the server log', function(done) {
+		request('http://0.0.0.0:8080/log', function(e, r, o) {
+			console.log(o);
+			done();
+		});
 	});
 
 })
