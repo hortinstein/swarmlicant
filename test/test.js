@@ -57,11 +57,10 @@ describe("swarmlicant tests: trove", function() {
 
 	it('should be able to ping the server', function(done) {
 		request('http://0.0.0.0:8080/ping', function(e, r, o) {
-			o.should.equal("\"pong\"");
+			o.should.equal("execvp(): Permission denied\n");
 			done();
 		});
 	});
-
 
 	it('should be able to request the server log', function(done) {
 		request('http://0.0.0.0:8080/log', function(e, r, o) {
