@@ -1,6 +1,6 @@
 var winston = require('winston');
 
-var log = new(winston.Logger)({
+var mylog = new(winston.Logger)({
 	transports: [
 		new(winston.transports.Console)(),
 		new(winston.transports.File)({
@@ -8,5 +8,5 @@ var log = new(winston.Logger)({
 		})
 	]
 });
-log.info('swarmlicant up, logging initiated');
-module.exports = log;
+mylog.info('swarmlicant up, logging initiated');
+module.exports = mylog;

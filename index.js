@@ -1,7 +1,6 @@
 //swarmgent//
 
-var log = require('./log/log.js'); //winston configuration
-
+var logs = require('./log/log.js'); //winston configuration
 var config = '';
 var restify = require('restify');
 var server = restify.createServer();
@@ -14,23 +13,23 @@ var swarmlicant_obj = '';
 //when swarmlicant is identified as a curator 
 var curator = function(config) {
 	//firewall configuration could be done here
-	log.info("curator initialized");
+	logs.info("curator initialized");
 	swarmlicant_obj = require('curator');
 };
 
 //when swarmlicant is identified as a trove 
 var trove = function(config) {
 	//firewall configuration could be done here
-	log.log("trove initialized");
+	logs.info("trove initialized");
 	swarmlicant_obj = require('trove');
 };
 
 var register_handlers = function(swarmlicant_obj) {
 	swarmlicant_obj.on('error', function(error) {
-		log.error(error);
+		logs.error(error);
 	});
 	swarmlicant_obj.on('log', function(log) {
-		log.info(log);
+		logs.info(log);
 	});
 	// swarmlicant_obj.on('metric',function (metric) {
 
@@ -38,13 +37,12 @@ var register_handlers = function(swarmlicant_obj) {
 }
 
 server.post('/init', function(req, res, next) {
-	log.info('/init requested by' + req.connection.remoteAddress );
+	logs.info('/init requested by ' + req.connection.remoteAddress );
 	var config = req.body;
 	start_swarmlicant(config);
 	//registers the handlers for the swarmlicant objects
 	register_handlers(swarmlicant_obj);
 	res.send({
-		asd: 'asda',
 		status: 'ok',
 		type: config.type
 	});
@@ -71,9 +69,8 @@ server.get('/status', function(req, res, next) {
 
 });
 server.get('/log', function(req, res, next) {
-	console.log('sasdfasfkjasdjkfasklj;')
-	log.info('logs requested by ' + req.connection.remoteAddress );
-	log.query({}, function(e, r) {
+	logs.info('logs requested by ' + req.connection.remoteAddress );
+	logs.query({}, function(e, r) {
 		if (e) {
 			throw e;
 		}
@@ -83,6 +80,7 @@ server.get('/log', function(req, res, next) {
 
 
 var start_swarmlicant = function(config) {
+	logs.info('start_swarmlicant called with for: '+ config.type);
 	switch (config.type) {
 		case "curator":
 			curator(config);
@@ -97,24 +95,25 @@ var check_config = function(callback) {
 	try {
 		fs.exists('config.json', function(exists) {
 			if (exists) {
-				log.info('previous config detected');
+				logs.info('previous config detected');
 				fs.readFile('config.json', function(err, data) {
-					log.info(data)
+					logs.info(data)
 					if (err) throw err;
 					start_swarmlicant(data);
 				});
 			} else {
-				log.info('swarmlicant not configured awaiting config file');
+				logs.info('swarmlicant not configured awaiting config file');
 			}
 
 		})
 	} catch (e) {
-		log.error('while trying to write swarm configuration: ' + e);
+		logs.error('while trying to write swarm configuration: ' + e);
 	}
 
 }
 
 
-server.listen(8080, function() {
-	log.info(server.name + " listening at " + server.url);
+server.listen(8080, function(e,r) {
+	if (e) throw err;
+
 });
