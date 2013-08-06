@@ -49,7 +49,9 @@ server.post('/init', function(req, res, next) {
 });
 
 server.get('/ping', function(req, res, next) {
+	logs.info('pinged by ' + req.connection.remoteAddress );
 	swarmlicant_obj.ping(function(e, o) {
+		console.log("asdadadadad",e,o);
 		res.send(o);
 	});
 });
@@ -115,5 +117,5 @@ var check_config = function(callback) {
 
 server.listen(8080, function(e,r) {
 	if (e) throw err;
-
+	log.info('swarmlicant up, logging initiated, %s listening at %s', server.name, server.url);
 });

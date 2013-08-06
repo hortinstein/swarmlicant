@@ -8,5 +8,5 @@ var mylog = new(winston.Logger)({
 		})
 	]
 });
-mylog.info('swarmlicant up, logging initiated');
+
 module.exports = mylog;
