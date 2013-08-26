@@ -1,7 +1,9 @@
 var should = require('should');
 
 var request = require('request');
-var swarmgent = require('../index.js');
+//var swarmgent = require('../index.js');
+var trove_config = require('./test_configs/trove_config.json');
+var curator_config = require('./test_configs/curator_config.json');
 
 describe("swarmlicant tests: curator", function() {
 	var swarmgent = require('../index.js');
@@ -12,7 +14,6 @@ describe("swarmlicant tests: curator", function() {
 	});
 
 	it('should be able to recieve the curator configuration file', function(done) {
-		var config = require('./test_configs/curator_config.json');
 		request.post({
 			json: true,
 			url: 'http://0.0.0.0:8080/init'
@@ -20,7 +21,7 @@ describe("swarmlicant tests: curator", function() {
 			o.status.should.equal("ok");
 			o.type.should.equal("curator");
 			done();
-		}).form(config);
+		}).form(curator_config);
 
 	});
 
@@ -42,7 +43,6 @@ describe("swarmlicant tests: trove", function() {
 	});
 
 	it('should be able to recieve the trove configuration file', function(done) {
-		var config = require('./test_configs/trove_config.json');
 		request.post({
 			json: true,
 			url: 'http://0.0.0.0:8080/init'
@@ -50,20 +50,20 @@ describe("swarmlicant tests: trove", function() {
 			o.status.should.equal("ok");
 			o.type.should.equal("trove");
 			done();
-		}).form(config);
+		}).form(trove_config);
 
 	});
 
 	it('should be able to ping the server', function(done) {
 		request('http://0.0.0.0:8080/ping', function(e, r, o) {
-			o.should.equal("execvp(): Permission denied\n");
+			o.should.equal('\"pong\"');
 			done();
 		});
 	});
 
 	it('should be able to request the server log', function(done) {
+		this.timeout(5000);
 		request('http://0.0.0.0:8080/log', function(e, r, o) {
-			//console.log(o);
 			done();
 		});
 	});
